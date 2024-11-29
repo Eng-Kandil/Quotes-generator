@@ -33,9 +33,17 @@ var quotes = [
     }
 ];
 
+var lastQuote = -1;
+
 function generateQuote() {
-    const randomNumber = Math.floor(Math.random() * quotes.length);
-    const randomQuote = quotes[randomNumber];
+    var randomNumber
+    do{
+        randomNumber = Math.floor(Math.random() * quotes.length);
+
+    }while(randomNumber === lastQuote);
+    lastQuote = randomNumber;
+
+    var randomQuote = quotes[randomNumber];
 
     document.getElementById('quote').textContent = `"${randomQuote.quote}"`;
     document.getElementById('author').textContent = `- ${randomQuote.author}`;
